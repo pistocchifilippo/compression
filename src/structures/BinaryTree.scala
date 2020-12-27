@@ -6,13 +6,12 @@ object BinaryTree {
     def prev: Option[BinaryTree]
     def zero: Option[BinaryTree]
     def one: Option[BinaryTree]
-    def toPrint(space: String): String =
-      space + "Zero\n" + printBranch(zero, "", space + "  ") +
-      space + "One\n" + printBranch(one, "", space + "  ")
+    def toPrint(space: String): String = if (zero.nonEmpty && one.nonEmpty) {
+        space + "Zero\n" + zero.get.toPrint(space + "  ") +
+        space + "One\n" + one.get.toPrint(space + "  ")
+      }
+      else ""
   }
-  def printBranch(branch: Option[BinaryTree], name: String, space: String): String =
-    if (branch.isEmpty) "" else branch.get.toPrint(space)
-
   case class Branch(z: BinaryTree, o: BinaryTree) extends BinaryTree {
     override def prev: Option[BinaryTree] = None
     override def zero: Option[BinaryTree] = Some(z)
@@ -31,6 +30,8 @@ object BinaryTree {
    */
   def apply(height: Int): BinaryTree =
     if (height == 0) Leaf() else Branch(apply(height - 1), apply(height - 1))
+
+
 
 
 

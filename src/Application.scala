@@ -3,7 +3,7 @@ import structures.BinaryTree._
 
 object Application extends App {
 
-  val tree = BinaryTree(1)
+  val tree = BinaryTree(2)
   println(tree)
   println(
     tree.toPrint("")
