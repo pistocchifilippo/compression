@@ -3,10 +3,10 @@ import structures.BinaryTree._
 
 object Application extends App {
 
-  val tree = BinaryTree(2)
+  val tree = ModifiableBinaryTree(2)
+
   println(tree)
-  println(
-    tree.toPrint("")
-  )
+  println(tree.toPrint(""))
+
 
 }
