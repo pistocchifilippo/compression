@@ -1,5 +1,12 @@
+import structures.BinaryTree
+import structures.BinaryTree._
+
 object Application extends App {
 
-  println("Hey I'm compression!")
+  val tree = BinaryTree(1)
+  println(tree)
+  println(
+    tree.toPrint("")
+  )
 
 }
