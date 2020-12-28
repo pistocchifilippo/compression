@@ -17,6 +17,8 @@ project/plugins/project/
 .worksheet
 .idea
 
+tmp
+
 # Mac
 .DS_Store
 .AppleDouble
