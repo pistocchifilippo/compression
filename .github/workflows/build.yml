@@ -1,7 +1,7 @@
 name: CI-build
 on: push
 jobs:
-  printHello:
+  compileAndTest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
