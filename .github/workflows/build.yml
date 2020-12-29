@@ -2,6 +2,7 @@ name: CI-build
 on: push
 jobs:
   printHello:
-    runs-on: [ubuntu-latest]
+    runs-on: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - run: echo HelloWorld
+      - uses: actions/checkout@v2
+      - run: ./gradlew compileTestScala
