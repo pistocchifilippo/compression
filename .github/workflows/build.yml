@@ -2,6 +2,6 @@ name: CI-build
 on: push
 jobs:
   printHello:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
       - run: ls
