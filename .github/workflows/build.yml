@@ -2,7 +2,6 @@ name: CI-build
 on: push
 jobs:
   printHello:
-    runs-on: [ubuntu-latest]
+    runs-on: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      -uses: actions/checkout@v2
-      -run: echo This is CI test
+      run: echo This is CI test
