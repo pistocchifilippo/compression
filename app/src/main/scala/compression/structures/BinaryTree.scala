@@ -1,4 +1,4 @@
-package structures
+package compression.structures
 
 object BinaryTree {
 
