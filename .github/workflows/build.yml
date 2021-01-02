@@ -2,7 +2,7 @@ name: Multiplatform build
 on:
   push:
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '0 4 * * SUN'
   #on version
   #cron
 
@@ -11,7 +11,10 @@ on:
 
 jobs:
   compileAndTest:
-    runs-on: ubuntu-latest #need
+    strategy:
+      matrix:
+        os: [ubuntu, macos, windows]
+    runs-on: ${{ matrix.os }} #need
     steps:
       - uses: actions/checkout@v2
       - run: ./gradlew compileTestScala
