@@ -1,14 +1,17 @@
-name: CI-build
-on: push
+name: Multiplatform build
+on:
+  - push
+  schedule:
+    - cron: '0 0 1 * *'
   #on version
   #cron
 
-env:
-  OS: [ubuntu-latest, macos-latest, windows-latest]
+#env:
+ # os: [ubuntu-latest, macos-latest, windows-latest]
 
 jobs:
   compileAndTest:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #need
     steps:
       - uses: actions/checkout@v2
       - run: ./gradlew compileTestScala
