@@ -3,18 +3,18 @@ on:
   push:
   schedule:
     - cron: '0 4 * * SUN'
-  #on version
-  #cron
-
-#env:
- # os: [ubuntu-latest, macos-latest, windows-latest]
 
 jobs:
   compileAndTest:
     strategy:
       matrix:
         os: [ubuntu, macos, windows]
-    runs-on: ${{ matrix.os }}-latest #need
+    runs-on: ${{ matrix.os }}-latest
     steps:
       - uses: actions/checkout@v2
       - run: ./gradlew compileTestScala
+  deploy:
+    runs-on: ubuntu-latest
+    needs: compileAndTest
+    steps:
+      - run: echo Deploy starts
