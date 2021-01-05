@@ -37,5 +37,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("compression.App")
+    mainClass.set("compression.Application")
 }
