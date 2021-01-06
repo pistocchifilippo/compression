@@ -4,17 +4,20 @@ import compression.structures.BinaryTree
 import compression.structures.BinaryTree.Branch
 
 
-object Application extends App {
+object TreePOC extends App {
 
   val root = Branch(None)
-  val tree = BinaryTree(2, root)
+  val tree = BinaryTree(3, root)
 
   println(tree)
   println(tree.toPrint(""))
 
   println(tree.zero.get.zero.get)
 
+}
 
+
+object FilePOC extends App {
   val testoIn = "tmp/prova.txt"
   val testoOut = "tmp/out.txt"
   val imgIn = "tmp/laurea.jpeg"
@@ -51,16 +54,8 @@ object Application extends App {
   Files.write(Paths.get(imgOut), byteArrayAgain)
 
 
-
-
-
-
-
-
   //  import java.nio.file.{Files, Paths}
-//  val byteArray2 = Files.readAllBytes(Paths.get("src/laureacopia.jpeg"))
-//
-//  Files.write(Paths.get("src/laurea.jpeg"), byteArray2)
-
-
+  //  val byteArray2 = Files.readAllBytes(Paths.get("src/laureacopia.jpeg"))
+  //
+  //  Files.write(Paths.get("src/laurea.jpeg"), byteArray2)
 }

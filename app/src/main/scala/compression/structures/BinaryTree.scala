@@ -37,13 +37,14 @@ object BinaryTree {
   case class Leaf(override val prev: Option[BitTree]) extends BinaryTreeImpl
 
   def apply(height: Int, root: BitTree): BitTree =
-    if (height == 0) {
+    if (height <= 0) {
       Leaf(Some(root))
     } else {
       val branch = Branch(Some(root))
-      val child = apply(height - 1, branch)
-      branch.setZero(child)
-      branch.setOne(child)
+      val child1 = apply(height - 1, branch) // crate 2 in order to have different objects in memory
+      val child2 = apply(height - 1, branch) // maybe in future ca try to create just one
+      branch.setZero(child1)
+      branch.setOne(child2)
       branch
     }
 
