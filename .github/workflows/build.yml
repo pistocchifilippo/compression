@@ -12,7 +12,8 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/bould_compile_java@master
+      - id: compile
+        uses: actions/bould_compile_java@main
         with:
           operation: 'BUILD'
       - run: echo ciao #./gradlew compileTestScala
