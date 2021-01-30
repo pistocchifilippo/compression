@@ -43,4 +43,5 @@ object FilePOC extends App {
   //  val byteArray2 = Files.readAllBytes(Paths.get("src/laureacopia.jpeg"))
   //
   //  Files.write(Paths.get("src/laurea.jpeg"), byteArray2)
+  shit code
 }
