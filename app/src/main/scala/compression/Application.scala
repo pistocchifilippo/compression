@@ -1,22 +1,5 @@
 package compression
 
-import compression.structures.BinaryTree
-import compression.structures.BinaryTree.Branch
-
-
-object TreePOC extends App {
-
-  val root = Branch(None)
-  val tree = BinaryTree(3, root)
-
-  println(tree)
-  println(tree.toPrint(""))
-
-  println(tree.zero.get.zero.get)
-
-}
-
-
 object FilePOC extends App {
   val testoIn = "tmp/prova.txt"
   val testoOut = "tmp/out.txt"
@@ -25,29 +8,31 @@ object FilePOC extends App {
 
   // Files
   import java.nio.file.{Files, Paths}
-  val byteArray = Files.readAllBytes(Paths.get(imgIn))
+  import compression.IO.Converter._
+  import compression.IO.File._
+
+
+
+
+  lazy val byteArray: Array[Byte] = Files.readAllBytes(Paths.get(imgIn))
 
 
   //println(byteArray.mkString("Array(", ", ", ")"))
 
   import Util._
-  val bitList = byteArray.map(_.toInt).map(_+128).map(e => {
-    putZeroUntilLengthIs(e.toBinaryString, 8) // put zero
-  })
+  lazy val bitList = byteArray.map(_.toInt).map(_+128).map(byte => putZeroUntilLengthIs(byte.toBinaryString, 8))
   //.foldRight("")(_+_)
 
   println(bitList.mkString("Array(", ", ", ")"))
 
-  val byteArrayAgain = bitList.map(e => Integer.parseInt(e, 2).toByte + 128).map(_.toByte)
+  lazy val byteArrayAgain = bitList.map(e => Integer.parseInt(e, 2).toByte + 128).map(_.toByte)
   //println(byteArrayAgain.mkString("Array(", ", ", ")"))
 
-  println(byteArray.size, byteArrayAgain.length)
+  println(byteArray.length, byteArrayAgain.length)
 
   var eq = true
 
-  (0 until byteArray.size).foreach(i => if (byteArray(i) != byteArrayAgain(i)) {
-    eq = false
-  })
+  byteArray.indices.foreach(i => if (byteArray(i) != byteArrayAgain(i)) {eq = false})
 
   println(eq)
 
