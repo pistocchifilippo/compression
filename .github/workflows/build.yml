@@ -15,10 +15,4 @@ jobs:
       - id: compile
         uses: pistocchifilippo/build_test_java@master
         with:
-          operation: 'BUILD'
-      - run: echo ciao #./gradlew compileTestScala
-  deploy:
-    runs-on: ubuntu-latest
-    needs: compileAndTest
-    steps:
-      - run: echo Deploy starts
+          phrase: CIAO
