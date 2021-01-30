@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: compile
-        uses: actions/build_test_java@main
+        uses: pistocchifilippo/build_test_java@main
         with:
           operation: 'BUILD'
       - run: echo ciao #./gradlew compileTestScala
