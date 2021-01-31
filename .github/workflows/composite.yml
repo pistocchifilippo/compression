@@ -9,5 +9,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: pistocchifilippo/build_test_java@master
         with:
-          phrase: "CIAO"
+          phrase: 'CIAO'
 
