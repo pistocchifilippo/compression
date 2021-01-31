@@ -5,6 +5,15 @@ on:
     - cron: '0 4 * * SUN'
 
 jobs:
+  preliminary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./gradlew compileScala
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ubuntu_build
+          path: ubuntu_build.txt
   compileAndTest:
     strategy:
       matrix:
@@ -12,7 +21,11 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     steps:
       - uses: actions/checkout@v2
-      - run: ./gradlew compileTestScala
+      if: ${{ matrix.os }} == 'ubuntu'
+      uses: actions/download-artifact@v2
+      with:
+        name: ubuntu_build
+      - run: ./gradlew test
   deploy:
     runs-on: ubuntu-latest
     needs: compileAndTest
