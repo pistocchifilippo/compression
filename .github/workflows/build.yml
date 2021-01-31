@@ -16,7 +16,7 @@ jobs:
       - name: upload artifacts
       - shell: bash
         run: touch ok
-        uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2
         with:
           name: ubuntu_build
           path: ok
