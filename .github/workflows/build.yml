@@ -19,6 +19,7 @@ jobs:
           name: ubuntu_build
           path: ubuntu_build.txt
   compileAndTest:
+    needs: preliminary
     strategy:
       matrix:
         os: [ubuntu, macos, windows]
