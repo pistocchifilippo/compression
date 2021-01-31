@@ -17,13 +17,10 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ubuntu_build
-          path: ubuntu_build.txt
-  compileAndTest:
+          path: ubuntubuild.txt
+  test:
     needs: preliminary
-    strategy:
-      matrix:
-        os: [ubuntu, macos, windows]
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -35,6 +32,6 @@ jobs:
         run: ./gradlew test
   deploy:
     runs-on: ubuntu-latest
-    needs: compileAndTest
+    needs: test
     steps:
       - run: echo Deploy starts
