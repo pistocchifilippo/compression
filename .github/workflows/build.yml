@@ -14,10 +14,12 @@ jobs:
       - shell: bash
         run: ./gradlew compileScala
       - name: upload artifacts
+      - shell: bash
+        run: touch ok
         uses: actions/upload-artifact@v2
         with:
           name: ubuntu_build
-          path: ubuntubuild.txt
+          path: ok
   test:
     needs: preliminary
     runs-on: ubuntu-latest
